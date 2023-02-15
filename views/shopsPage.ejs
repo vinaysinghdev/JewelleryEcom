@@ -1,0 +1,109 @@
+<%- include('./partials/navbar') %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0">
+        <% if( category=='rings' ){ %>
+          <img src="images/banner/ringsbg.jpg" class="img-fluid" alt="">
+          <% } else if( category=='earrings' ) { %>
+            <img src="images/banner/earringbg.jpg" class="img-fluid" alt="">
+            <% } else if( category=='necklaces' ) { %>
+              <img src="images/banner/neacklacesbg.webp" class="img-fluid" alt="">
+              <% } else if( category=='braceletes' ) { %>
+                <img src="images/banner/braceletsbg.webp" class="img-fluid" alt="">
+                <% } else if( category=='nosepins' ) { %>
+                  <img src="images/banner/nosepinbg.webp" class="img-fluid" alt="">
+                  <% } else { %>
+                    <img src="images/banner/unkCatBg.webp" class="img-fluid" alt="">
+                    <% } %>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Start Product Product -->
+  <section id="new-arrivals" class="new-arrivals">
+    <div class="container">
+      <div class="section-header">
+        <% if( category=='rings' ){ %>
+          <h2 class="cfont">Our Rings Collection</h2>
+          <% } else if( category=='earrings' ) { %>
+            <h2 class="cfont">Our Earrings Collection</h2>
+            <% } else if( category=='necklaces' ) { %>
+              <h2 class="cfont">Our Necklaces Collection</h2>
+              <% } else if( category=='braceletes' ) { %>
+                <h2 class="cfont">Our Braceletes Collection</h2>
+                <% } else if( category=='nosepins' ) { %>
+                  <h2 class="cfont">Our Nose Pins Collection</h2>
+                  <% } else { %>
+                    <h2 class="cfont">Our <%=category%> Collection</h2>
+                    <% } %>
+
+      </div>
+      <div class="new-arrivals-content">
+        <div class="row">
+
+          <% pageData.forEach((value,index)=>{ %>
+
+            <div class="col-md-3 col-sm-4">
+              <div class="single-new-arrival">
+                <div class="single-new-arrival-bg">
+
+                  <img src="images/productImg/<%=value.productImg[0]%>" alt="new-arrivals images">
+                  <div class="single-new-arrival-bg-overlay"></div>
+                  <div class="sale bg-1" style="background-color: white !important;">
+                    <!-- <span class="lnr lnr-heart" onclick="addtoWishlist(this)" data-id="<%=value._id%>"
+                      style="cursor: pointer;"></span> -->
+
+                    <% if( typeof wishlist !='undefined' ){ %>
+                      <% let checkWishlist=wishlist.includes((value._id).toString()) %>
+
+                        <% if(checkWishlist){ %>
+
+                          <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                            <i class="fa-solid fa-heart" style="color: red;"></i>
+                          </span>
+
+                          <% } else { %>
+
+                            <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                              <i class="fa-solid fa-heart"></i>
+                            </span>
+
+                            <% } %>
+                              <% } else { %>
+                                <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                                  <i class="fa-solid fa-heart"></i>
+                                </span>
+
+                                <% } %>
+
+
+
+
+                  </div>
+                  <div class="new-arrival-cart text-center">
+                    <p class="m-0">
+                      <a onclick="addtoCart(this)" data-id="<%=value._id%>" style="cursor: pointer;">add <span>to
+                        </span> cart</a>
+                    </p>
+                  </div>
+                </div>
+                <h4><a href="/shop/<%=value.category%>/<%=value._id%>">
+                    <%=value.name%>
+                  </a></h4>
+                <div class="d-flex align-items-center" style="justify-content: center;">
+                  <p class="arrival-product-price me-2">₹ <%= value.price %>
+                  </p>
+                  <small><strike>₹ <%= value.oldPrice %> </strike></small>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+  </section>
+  <!-- End Product -->
+
+
+  <%- include('./partials/footer') %>

@@ -1,0 +1,294 @@
+<%- include('./partials/navbar') %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 p-0">
+        <% if( category=='rings' ){ %>
+          <img src="images/banner/ringsbg.jpg" class="img-fluid" alt="">
+          <% } else if( category=='earrings' ) { %>
+            <img src="images/banner/earringbg.jpg" class="img-fluid" alt="">
+            <% } else if( category=='necklaces' ) { %>
+              <img src="images/banner/neacklacesbg.webp" class="img-fluid" alt="">
+              <% } else if( category=='braceletes' ) { %>
+                <img src="images/banner/braceletsbg.webp" class="img-fluid" alt="">
+                <% } else if( category=='nosepins' ) { %>
+                  <img src="images/banner/nosepinbg.webp" class="img-fluid" alt="">
+                  <% } else { %>
+                    <img src="images/banner/unkCatBg.webp" class="img-fluid" alt="">
+                    <% } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-5">
+    <div class="row">
+      <div class="col-11 m-auto">
+        <div class="row align-items-center">
+          <div class="col-md-1 text-center">
+            <img src="images/productImg/<%=productData.productImg[0]%>" class="img-fluid my-4 productPgImg" alt=""
+              onclick="currentSlide(1)">
+            <img src="images/productImg/<%=productData.productImg[1]%>" class="img-fluid my-4 productPgImg" alt=""
+              onclick="currentSlide(2)">
+            <img src="images/productImg/<%=productData.productImg[2]%>" class="img-fluid my-4 productPgImg" alt=""
+              onclick="currentSlide(3)">
+          </div>
+          <div class="col-md-5 py-5 text-center">
+            <div class="imgContainer">
+              <div class="mySlides">
+                <img src="./images/productImg/<%=productData.productImg[0]%>" class="img-fluid w-75 productPgImg">
+              </div>
+              <div class="mySlides">
+                <img src="./images/productImg/<%=productData.productImg[1]%>" class="img-fluid w-75 productPgImg">
+              </div>
+              <div class="mySlides">
+                <img src="./images/productImg/<%=productData.productImg[2]%>" class="img-fluid w-75 productPgImg">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex pb-3 align-items-center justify-content-between">
+              <h3 class="fw-bold text-dark">
+                <%= productData.name %>
+              </h3>
+              <h4>
+                <!-- <i class="fa-regular fa-heart" onclick="addtoWishlist(this)" data-id="<%=productData._id%>"
+                  style="cursor: pointer;"></i> -->
+
+
+                <% if( typeof wishlist !='undefined' ){ %>
+                  <% let checkWishlist=wishlist.includes((productData._id).toString()) %>
+
+                    <% if(checkWishlist){ %>
+
+                      <span onclick="addtoWishlist(this)" data-id="<%=productData._id%>" style="cursor: pointer;">
+                        <i class="fa-solid fa-heart" style="color: red;"></i>
+                      </span>
+
+                      <% } else { %>
+
+                        <span onclick="addtoWishlist(this)" data-id="<%=productData._id%>" style="cursor: pointer;">
+                          <i class="fa-solid fa-heart"></i>
+                        </span>
+
+                        <% } %>
+                          <% } else { %>
+                            <span onclick="addtoWishlist(this)" data-id="<%=productData._id%>" style="cursor: pointer;">
+                              <i class="fa-solid fa-heart"></i>
+                            </span>
+
+                            <% } %>
+
+
+
+
+              </h4>
+            </div>
+            <p class="fw-bold mt-3 text-dark"> Product Description </p>
+            <p style="text-align: justify;">
+              <small>
+                <%= productData.desc %>
+              </small>
+            </p>
+            <div class="my-4 d-flex">
+              <% if(productData.size.length>1){ %>
+                <div>
+                  <small style="display: block;"> Size </small>
+                  <div>
+                    <select name="" class="me-3" style="width: 100px !important; cursor: pointer; " id="">
+                      <% for( i=0; i<productData.size.length; i++ ){ %>
+                        <option value="<%=productData.size[i]%>">
+                          <%=productData.size[i]%>
+                        </option>
+                        <% } %>
+                    </select>
+                  </div>
+                </div>
+                <% } %>
+                  <% if(productData.colors.length>1){ %>
+                    <div class="ps-4">
+                      <small style="display: block; padding-left: 10px; "> Color </small>
+                      <div class="px-3">
+                        <select name="" class="me-3" style="width: 100px !important; cursor: pointer;" id="">
+                          <% for( i=0; i<productData.colors.length; i++ ){ %>
+                            <option value="<%=productData.colors[i]%>">
+                              <%=productData.colors[i]%>
+                            </option>
+                            <% } %>
+                        </select>
+                      </div>
+                    </div>
+                    <% } %>
+            </div>
+            <div class="d-flex py-3 align-items-center">
+              <h3 style="color: black;"> <i class="fa-solid fa-indian-rupee-sign"></i>
+                <%= productData.price %>
+              </h3>
+              <h4 class="mx-5"> <i class="fa-solid fa-indian-rupee-sign"></i> <strike>
+                  <%= productData.oldPrice %>
+                </strike> </h4>
+            </div>
+            <button class="blackBtn py-3" onclick="addtoCart(this)" data-id="<%=productData._id%>"> Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start related Product -->
+  <section id="new-arrivals" class="new-arrivals pb-0">
+    <div class="container">
+      <div class="section-header" style="text-align: left;">
+        <h2 class="cfont">Related Products</h2>
+      </div>
+      <!--/.section-header-->
+      <div class="new-arrivals-content">
+        <div class="row">
+
+          <% realtedProduct.forEach((value,index)=>{ %>
+
+            <div class="col-md-3 col-sm-4">
+              <div class="single-new-arrival">
+                <div class="single-new-arrival-bg">
+                  <img src="images/productImg/<%=value.productImg[0]%>" alt="new-arrivals images">
+                  <div class="single-new-arrival-bg-overlay"></div>
+                  <div class="sale bg-1" style="background-color: white !important;">
+                    <!-- <span class="lnr lnr-heart" onclick="addtoWishlist(this)" data-id="<%=value._id%>"
+                      style="cursor: pointer;"></span> -->
+
+                      <% if( typeof wishlist !='undefined' ){ %>
+                        <% let checkWishlist=wishlist.includes((value._id).toString()) %>
+      
+                          <% if(checkWishlist){ %>
+      
+                            <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                              <i class="fa-solid fa-heart" style="color: red;"></i>
+                            </span>
+      
+                            <% } else { %>
+      
+                              <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                                <i class="fa-solid fa-heart"></i>
+                              </span>
+      
+                              <% } %>
+                                <% } else { %>
+                                  <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                                    <i class="fa-solid fa-heart"></i>
+                                  </span>
+      
+                                  <% } %>
+
+
+
+                  </div>
+                  <div class="new-arrival-cart text-center">
+                    <p class="m-0">
+                      <a onclick="addtoCart(this)" data-id="<%=value._id%>" style="cursor: pointer;">add <span>to
+                        </span> cart</a>
+                    </p>
+                  </div>
+                </div>
+                <h4><a href="/shop/<%=value.category%>/<%=value._id%>">
+                    <%=value.name%>
+                  </a></h4>
+                <div class="d-flex align-items-center" style="justify-content: center;">
+                  <p class="arrival-product-price me-2">₹ <%= value.price %>
+                  </p>
+                  <small><strike>₹ <%= value.oldPrice %> </strike></small>
+                </div>
+              </div>
+            </div>
+
+            <% }) %>
+
+
+        </div>
+      </div>
+      <!--/.container-->
+
+  </section>
+  <!-- End related Product -->
+
+
+  <!-- Start related Product -->
+  <section id="new-arrivals" class="new-arrivals">
+    <div class="container">
+      <div class="section-header" style="text-align: left;">
+        <h2 class="cfont">Product Reviews</h2>
+      </div>
+      <div class="new-arrivals-content">
+        <div class="row" style="justify-content: space-around;">
+
+          <% if( productData.reviews.length> 0 ){ %>
+            <% for(i=0; i < productData.reviews.length; i++ ){ %>
+              <% let data=Object.values(productData.reviews[i]) %>
+
+                <div class="col-md-3">
+                  <div class="d-flex align-items-center">
+                    <img src="images/icons/user1.jpg" style="border-radius: 50%; width: 50px;" alt="">
+                    <div>
+                      <h5 style="color: black;" class="mx-3 mb-2">
+                        <%= data[0] %>
+                      </h5>
+                      <div class="d-flex px-3">
+                        <% for(k=1; k < data[1] ; k++){ %>
+                          <i class="fa-solid fa-star mx-1" style="color: gold; font-size: 1rem;"></i>
+                          <% } %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-4">
+                    <p>
+                      <%= data[2] %>
+                    </p>
+                  </div>
+                </div>
+                <% } %>
+                  <% } else { %>
+                    <h3> No Reviews are Available </h3>
+                    <% } %>
+        </div>
+      </div>
+  </section>
+  <!-- End related Product -->
+
+
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("demo");
+      let captionText = document.getElementById("caption");
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+  </script>
+
+
+  <%- include('./partials/footer') %>

@@ -1,0 +1,285 @@
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 60vh !important; background-image: url(images/rev_home3_01.jpg); background-size: cover;">
+    <div class="col-md-10 m-auto">
+      <p class="whitetxt mb-4"> <a href="/" class="whitetxt">Home</a> / Cart </p>
+      <h1 class="whitetxt cfont" style="font-size: 5rem;"> Cart </h1>
+    </div>
+  </div>
+</div>
+
+<% if( cartProduct.length> 0 ){ %>
+
+
+
+
+<!-- Start related Product -->
+<section id="new-arrivals" class="new-arrivals">
+  <div class="container">
+    <div class="section-header" style="text-align: left;">
+      <h2 class="cfont">Your Shopping Cart</h2>
+    </div>
+    <!--/.section-header-->
+    <div class="new-arrivals-content">
+      <div class="row align-items-end">
+
+        <div class="col-md-7">
+          <table class="table table-borderless" id="cartTable">
+            <thead class="" style="height: 60px; align-items: center;">
+              <tr>
+                <th class="pb-5"> Product </th>
+                <th class="pb-5"> Price </th>
+                <th class="pb-5"> Quantity </th>
+                <th class="pb-5"> Total </th>
+                <th class="pb-5"> </th>
+              </tr>
+            </thead>
+            <tbody class="" style="padding-top: 300px !important;">
+              <% cartProduct.forEach((value,index)=>{ %>
+
+              <tr class="" data-id="<%=value._id%>" data-name="<%=value.name%>" data-price="<%=value.price%>" data-quantityid="quantity<%=index%>" style="margin-bottom: 20px !important;">
+                <td class="">
+                  <a href="/shop/<%=value.category%>/<%=value._id%>" class="d-flex align-items-center">
+                    <img src="images/productImg/<%=value.productImg[0]%>" alt="new-arrivals images" style="width: 50px; border-radius: 50%;">
+                    <p class="ms-4 text-dark" style="font-size: 1.4rem;">
+                      <%= value.name %>
+                    </p>
+
+                  </a>
+                </td>
+                <td style="font-size: 1.2rem;" class="vertical-align-middle"> <i class="fa-solid fa-indian-rupee-sign me-2"></i>
+                  <span class="" id="price<%=index%>">
+                    <%= value.price %>
+                  </span>
+
+                </td>
+                <td class="text-center vertical-align-middle">
+                  <select name="" onchange="updateCart(this)" class="me-3" style="width: 100px !important; cursor: pointer;" id="quantity<%=index%>" data-price="<%= value.price%>" data-subtotalid="subtotal<%=index%>">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </td>
+                <td class="vertical-align-middle" style="font-size: 1.2rem;"> <i class="fa-solid fa-indian-rupee-sign me-2"></i>
+                  <span id="subtotal<%=index%>">
+                    <%= value.price %>
+                  </span>
+                </td>
+                <td class="vertical-align-middle"> <i class="fa-solid fa-trash" style="font-size: 1.5rem; cursor: pointer;" onclick="removeCart(this)" data-id="<%=value._id%>"></i>
+                </td>
+              </tr>
+
+              <% }) %>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="col-md-4 offset-md-1 p-4">
+          <div class="p-5" style="background-color: whitesmoke; border-radius: 10px;">
+            <h5 class="text-dark"> Delivery Type </h5>
+            <div class="mb-5 mt-3 container-fluid px-0 mx-0">
+              <select name="" id="deliveryType" onchange="deliveryFun()">
+                <option value="normal"> Normal Delivery ( Free ) </option>
+                <option value="quick"> Quick Delivery ( ₹ 80 Extra ) </option>
+              </select>
+            </div>
+            <div>
+              <h5> Total Amount </h5>
+              <p class="text-dark"> ₹<span class="ps-1" id="finalTotal">1000</span> </p>
+              <p style="font-size: 1.3rem;"> (<span id="itemCount"> 5 </span> Items) </p>
+            </div>
+            <div class="text-center mt-4">
+              <button onclick="saveData()" class="blackBtn py-3">
+                Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/.container-->
+
+</section>
+<!-- End related Product -->
+
+
+<% } else { %>
+
+<section id="new-arrivals" class="new-arrivals">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-12 py-5 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="m-4" style="width: 50px; height: 50px;" id="Capa_1" height="512" viewBox="0 0 512.001 512.001" width="512">
+          <g>
+            <g>
+              <g>
+                <g>
+                  <path d="m479.371 131.029c-3.099 0-6.154-1.436-8.11-4.139-3.236-4.475-2.233-10.727 2.241-13.963l22.638-16.376c4.475-3.239 10.727-2.233 13.964 2.241 3.236 4.475 2.233 10.727-2.241 13.963l-22.638 16.376c-1.772 1.281-3.823 1.898-5.854 1.898z">
+                  </path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="m32.63 131.029c-2.032 0-4.082-.617-5.854-1.898l-22.637-16.376c-4.475-3.237-5.478-9.488-2.241-13.963 3.238-4.474 9.49-5.478 13.964-2.241l22.638 16.375c4.475 3.237 5.478 9.488 2.241 13.963-1.956 2.703-5.012 4.14-8.111 4.14z">
+                  </path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="m256.001 49.025c-5.522 0-10-4.477-10-10v-23.867c0-5.523 4.478-10 10-10s10 4.477 10 10v23.866c0 5.523-4.478 10.001-10 10.001z">
+                  </path>
+                </g>
+              </g>
+              <g>
+                <path d="m492.647 215.277-77.499-133.949c-1.787-3.09-5.086-4.992-8.655-4.992h-300.986c-3.569 0-6.868 1.902-8.655 4.992l-77.498 133.949c-2.092 3.614-1.717 8.147.939 11.369l227.991 276.558c1.899 2.305 4.729 3.639 7.716 3.639s5.816-1.334 7.716-3.639l85.631-103.871 1.009.399 22.572 57.368c1.505 3.824 5.196 6.338 9.306 6.338s7.801-2.514 9.306-6.338l22.572-57.368 57.228-22.623c3.817-1.509 6.324-5.196 6.324-9.3s-2.507-7.791-6.323-9.3l-57.229-22.623-4.026-10.231 81.621-99.009c2.657-3.222 3.032-7.754.94-11.369zm-25.994-4.992h-113.904l53.737-103.991zm-210.652 248.864-67.465-228.863h22.259c5.522 0 10-4.477 10-10s-4.478-10-10-10h-17.303l62.508-102.427 62.508 102.426h-17.301c-5.522 0-10 4.477-10 10s4.478 10 10 10h22.26zm79.601-259.246-63.204-103.567h116.722zm-167.918 30.382 65.943 223.697-184.414-223.697zm8.713-30.382-53.517-103.567h116.722zm-70.883-93.609 53.736 103.991h-113.902zm172.86 347.689 21.836-74.074 29.588 11.696zm162.089-86.174-37.741 14.919c-2.577 1.019-4.615 3.06-5.63 5.638l-14.857 37.76-14.857-37.76c-1.015-2.578-3.053-4.62-5.63-5.638l-37.741-14.919 37.742-14.92c2.576-1.019 4.614-3.06 5.629-5.638l14.857-37.76 14.857 37.76c1.015 2.578 3.053 4.62 5.629 5.638zm-48.923-89.291c-1.505-3.824-5.196-6.338-9.306-6.338s-7.801 2.514-9.306 6.338l-22.572 57.368-42.071 16.631 36.032-122.232h118.47l-61.075 74.087z">
+                </path>
+                <g>
+                  <path d="m256.18 230.291c-4.12 0-7.897-2.638-9.35-6.483-1.491-3.948-.269-8.58 3.006-11.255 3.235-2.643 7.897-2.987 11.481-.842 3.583 2.144 5.496 6.426 4.674 10.529-.924 4.61-5.103 8.051-9.811 8.051z">
+                  </path>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <div>
+          <h2 class="text-dark p-4 cfont">
+            Uh Oh!
+          </h2>
+          <h1 class="text-dark p-4 cfont">
+            Your Cart Seems to be Empty!
+          </h1>
+          <div class="col-6 m-auto">
+            <a href="/" class="blackBtn py-3">
+              Start Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+
+<% } %>
+
+
+
+
+<script>
+  function updateCart(e) {
+    let quantity = $(e).find(":selected").val();
+    let price = e.getAttribute('data-price');
+    let subtotalId = e.getAttribute('data-subtotalid');
+    document.getElementById(subtotalId).innerHTML = price * quantity;
+
+
+    var rowCount = $('#cartTable tr').length - 1;
+    let total = 0;
+    for (i = 0; i < rowCount; i++) {
+      let count = $(`#subtotal${i}`).text().trim();
+      total = total + parseInt(count)
+    }
+
+    let deliveryType = $("#deliveryType").val();
+
+    if (deliveryType == 'quick') {
+      total = total + 80;
+    }
+    $("#itemCount").text(rowCount)
+    $("#finalTotal").text(total);
+
+  };
+
+  function deliveryFun() {
+    let val = document.getElementById('deliveryType').value;
+    if (val == 'quick') {
+      let total = $("#finalTotal").text();
+      $("#finalTotal").text(parseInt(total) + 80)
+    }
+    if (val == 'normal') {
+      let total = $("#finalTotal").text();
+      $("#finalTotal").text(parseInt(total) - 80)
+    }
+
+  }
+</script>
+
+
+<script>
+  $(document).ready(() => {
+    var rowCount = $('#cartTable tr').length - 1;
+    let total = 0;
+    for (i = 0; i < rowCount; i++) {
+      let count = $(`#subtotal${i}`).text().trim();
+      total = total + parseInt(count)
+    }
+
+    let deliveryType = $("#deliveryType").val();
+
+    if (deliveryType == 'quick') {
+      total = total + 80;
+    }
+
+    $("#itemCount").text(rowCount)
+    $("#finalTotal").text(total);
+  })
+</script>
+
+
+
+<script>
+  function saveData() {
+
+
+    let deliveryType = $("#deliveryType").val();
+    var SearchFieldsTable = $("#cartTable tbody");
+    var trows = SearchFieldsTable.children("tr");
+    let cartProductData = [];
+
+    let total = '';
+    $.each(trows, function(index, row) {
+      var rowId = $(row).attr("data-id");
+      var name = $(row).attr("data-name");
+      var price = $(row).attr("data-price");
+      var quantityId = $(row).attr("data-quantityid");
+      let quantity = document.getElementById(quantityId).value;
+      cartProductData.push([rowId,name , price, quantity])
+    });
+
+    console.log(cartProductData);
+
+    $.ajax({
+      contentType: "application/json; charset=utf-8",
+      url: "/checkCheckout",
+      method: "POST",
+      dataType: "json",
+      data: JSON.stringify({
+        cartProductData: cartProductData,
+        deliveryType:deliveryType
+      }),
+      success: (res) => {
+        if( res == 'gotocheckout' ){
+          window.location.href = '/checkout';
+        }
+        else if(res == 'emptycheckout'){
+          window.location.href = '/';
+        }
+      }
+    })
+
+  }
+</script>
+
+
+
+
+
+<%- include('./partials/footer') %>

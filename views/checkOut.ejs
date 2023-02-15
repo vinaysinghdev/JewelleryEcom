@@ -1,0 +1,234 @@
+<%- include('./partials/navbar') %>
+
+
+  <div class="container-fluid m-0" style="background-image: url('images/signupbg.jpg');">
+    <div class="row p-5 mt-5 align-items-center" style="height: 100vh !important;">
+      <div class="col-9 px-5 m-auto" style="border-radius: 20px; overflow: hidden; background-color: white;">
+        <div class="row align-items-center">
+          <div class="col-md-8 py-5 px-4">
+
+
+            <% if(typeof address !='undefined' ){ %>
+              <div class="pt-5">
+                <small class=""> Address : </small>
+                <input type="text" style="border: none;" class="py-1 w-100 mb-5 border-bottom" id="add1"
+                  value="<%=address[0]%>">
+                <div class="row">
+                  <div class="col-4">
+                    <small class=""> State : </small>
+                    <input type="text" id="add2" style="border: none;" class="py-1 w-100 mb-5 border-bottom"
+                      value="<%=address[1]%>">
+                  </div>
+                  <div class="col-4">
+                    <small class=""> Pincode : </small>
+                    <input type="text" id="add3" style="border: none;" class="py-1 w-100 mb-5 border-bottom"
+                      value="<%=address[2]%>">
+                  </div>
+                  <div class="col-4">
+                    <small class=""> Mobile : </small>
+                    <input type="text" id="mob" style="border: none;" class="py-1 w-100 mb-5 border-bottom"
+                      value="<%=address[3]%>">
+                  </div>
+                </div>
+              </div>
+              <% } else { %>
+                <div class="pt-5">
+                  <small class=""> Address : </small>
+                  <input type="text" id="add1" style="border: none;" class="py-1 w-100 mb-5 border-bottom" value="">
+                  <div class="row">
+                    <div class="col-4">
+                      <small class=""> State : </small>
+                      <input type="text" id="add2" style="border: none;" class="py-1 w-100 mb-5 border-bottom" value="">
+                    </div>
+                    <div class="col-4">
+                      <small class=""> Pincode : </small>
+                      <input type="text" id="add3" style="border: none;" class="py-1 w-100 mb-5 border-bottom" value="">
+                    </div>
+                    <div class="col-4">
+                      <small class=""> Mobile : </small>
+                      <input type="text" id="mob" style="border: none;" class="py-1 w-100 mb-5 border-bottom" value="">
+                    </div>
+                  </div>
+                </div>
+
+                <% } %>
+
+                  <div class="py-5">
+                    <h4> Select a Payment Method </h4>
+                    <div class="row pt-5">
+                      <div class="col-4">
+                        <label>
+                          <input type="radio" id="paymentMode" name="paymentMod" class="card-input-element"
+                            value="card" />
+                          <div class="panel panel-default card-input">
+                            <div class="text-center">
+                              <p style="font-size: 1.5rem; font-weight: normal; color: black;"> CARD </p>
+                              <img src="images/icons/payIcon1.png" alt="">
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="col-4">
+                        <label id="upiBox">
+                          <input type="radio" name="paymentMod" class="card-input-element" id="paymentMode"
+                            value="upi" />
+                          <div class="panel panel-default card-input">
+                            <div class="text-center">
+                              <p style="font-size: 1.5rem; font-weight: normal; color: black;"> UPI </p>
+                              <img src="images/icons/payIcon2.png" alt="">
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="col-4">
+                        <label>
+                          <input type="radio" name="paymentMod" class="card-input-element" id="paymentMode"
+                            value="Cash On Delivery" />
+                          <div class="panel panel-default card-input">
+                            <div class="text-center">
+                              <p style="font-size: 1.5rem; font-weight: normal; color: black;"> COD </p>
+                              <img src="images/icons/payIcon3.png" alt="">
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+          </div>
+          <div class="col-md-4 p-5 text-center">
+            <div class="bg-light py-5" style="border-radius: 10px;">
+
+              <h3 class="cfont"> Order Summary </h3>
+              <div class="d-flex justify-content-evenly pt-5">
+                <p style="color: black; font-size: 1.5rem;"> Items: </p>
+                <p style="color: black; font-size: 1.5rem;">
+                  ₹ <span>
+                    <%=total%>
+                  </span>
+                </p>
+              </div>
+              <div class="d-flex justify-content-evenly pb-5 py-3">
+                <p style="color: black; font-size: 1.5rem;"> Delivery: </p>
+                <p style="color: black; font-size: 1.5rem;">
+                  ₹ <span>
+                    <%=deliveryAmt%>
+                  </span>
+                </p>
+              </div>
+              <div class="d-flex justify-content-evenly pb-5 py-3">
+                <p style="color: black; font-size: 1.7rem;"> Order Total : </p>
+                <p style="color: black; font-size: 1.7rem;">
+                  ₹ <span id="totalAmt">
+                    <%=total+deliveryAmt%>
+                  </span>
+                </p>
+              </div>
+              <button class="blackBtn py-3" id="saveOrderBtn">
+                Place Your Order
+              </button>
+              <!-- <button class="blackBtn py-3" data-toggle="modal" data-target="#confirmOrderModal" id="saveOrderBtn">
+              Place Your Order
+          </button> -->
+              <p style="color: black; font-size: 1.1rem;" class="p-5">
+                By placing your order, you agree to SineJewel's privacy notice and conditions of use.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" id="confirmOrderModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-none">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row py-5 align-items-center">
+            <div class="col-6 text-center">
+              <img src="images/online-food-delivery-process.gif" class="img-fluid w-75" alt="">
+            </div>
+            <div class="col-6 p-5">
+              <div>
+                <img src="images/icons/check.gif" alt="">
+              </div>
+              <div class="content">
+                <h2 class="py-3">Congratulations! <span id="shown_name"></span></h2>
+                <p class="mb-3 mt-2">
+                  Your order has been placed successfully.
+                </p>
+                <a href="/orders">
+                  <button class="blackBtn py-3" style="font-size: 1.5rem;"> View Orders </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="modalAppned" class="d-none"></p>
+
+
+  <script>
+    $(document).ready(() => {
+      $('#upiBox').click();
+    })
+  </script>
+
+  <script>
+    $('#saveOrderBtn').click(() => {
+
+      let add1 = $('#add1').val();
+      let add2 = $('#add2').val();
+      let add3 = $('#add3').val();
+      let mob = $('#mob').val();
+      let payMOd = $('input[name="paymentMod"]:checked').val();
+      let totalAmt = $('#totalAmt').text();
+
+      if (!add1 || !add2 || !add3) {
+        alert('Please Fill the Address')
+        return;
+      }
+      if (!mob) {
+        alert('Please Fill the Address')
+        return;
+      }
+      if (!payMOd) {
+        alert('Please Select Payment Option')
+        return;
+      }
+      if (payMOd == 'card' || payMOd == 'upi') {
+        alert("This Payment Method isn't Available")
+        return;
+      }
+      
+      $.ajax({
+        contentType: "application/json; charset=utf-8",
+        url: "/saveOrder",
+        method: "POST",
+        dataType: "json",
+        data: JSON.stringify({
+          address: [add1, add2, add3],
+          mobile: mob,
+          payemntMode: payMOd,
+          totalAmt: parseInt(totalAmt)
+        }),
+        success: (res) => {
+          if (res == 'orderPlaced') {
+            $("#modalAppned").append(`<p data-toggle="modal" data-target="#confirmOrderModal" id="saveOrderModelBtn"></p>`)
+            $('#saveOrderModelBtn').click();
+          }
+        }
+      })
+    })
+  </script>
+
+
+  <%- include('./partials/footer') %>

@@ -1,0 +1,39 @@
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+    <div class="row align-items-center" style="height: 60vh !important; background-image: url(images/rev_home3_01.jpg); background-size: cover;">
+        <div class="col-md-10 m-auto">
+            <h1 class="whitetxt cfont mb-4" style="font-size: 4rem;"> have doubt </h1>
+            <h1 class="whitetxt cfont" style="font-size: 8rem;"> Contact Us </h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="container py-5">
+    <div class="col-4 m-auto py-5">
+        <form action="/addnewItem" method="post" enctype="multipart/form-data" >
+            <input type="text" class="form-control mb-2" name="name" placeholder="Name" /> 
+            <select class="form-control mb-2" name="category" id="" >
+                <option value="" disabled selected > Select Category </option>
+                <option value="Rings"> Rings </option>
+                <option value="Earrings"> Earrings </option>
+                <option value="Necklaces"> Necklaces </option>
+                <option value="Braceletes"> Braceletes </option>
+                <option value="Nose-Pin"> Nose-Pin </option>
+            </select>
+            <textarea name="desc" id="" cols="30" rows="5" placeholder="desc" class="form-control mb-2"></textarea>
+            <input type="text" class="form-control mb-2" placeholder="price" name="price" /> 
+            <input type="text" class="form-control mb-2" placeholder="oldPrice" name="oldPrice" /> 
+            <input type="text" class="form-control mb-2" placeholder="stock" name="stock" /> 
+            <input type="text" class="form-control mb-2" placeholder="showOnHome" name="showOnHome" /> 
+            <input type="text" class="form-control mb-2" placeholder="colors" name="colors" /> 
+            <input type="text" class="form-control mb-2" placeholder="size" name="size" /> 
+            <input type="file" class="form-control mb-2" placeholder="proImg1" accept="image/*" name="productImg" multiple  /> 
+            <button type="submit" class="m-auto"> Submit </button>
+        </form>
+    </div>
+</div>
+
+
+<%- include('./partials/footer') %>

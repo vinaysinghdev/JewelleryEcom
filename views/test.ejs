@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="margin: auto; width: max-content; text-align: center;">
+        <form action="/create-checkout-session" method="post">
+            <img src="images/pexels-tima-miroshnichenko-5973554.jpg" style="width: 300px; border-radius: 20px;" alt="">
+            <br>
+            <h3> Canva Painting </h3>
+            <button id="pay-button">
+                Buy
+            </button>
+        </form>
+    </div>
+
+
+    <!--Inside index.html -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "rzp_test_I5AxszcCXYQyui",
+            "amount": "10",
+            "currency": "INR",
+            "name": "beetal Teach",
+            "description": "Pay & Checkout this Course, Upgrade your DSA Skill",
+            "image": "https://media.geeksforgeeks.org/wp-content/uploads/20210806114908/dummy-200x200.png", 
+            "order_id": "order_KzfntSAproVVCo",
+            "handler": function (response) {
+                console.log(response)
+                alert("This step of Payment Succeeded");
+            },
+            "prefill": {
+                "contact": "8800811752",
+                "name": "Vinay Singh",
+                "email": "vinay.shilpani123@gmail.com"
+            },
+            "notes": {
+                "description": "Best Course for SDE placements",
+                "language": "Available in 4 major Languages JAVA",
+                "access": "This course have Lifetime Access"
+            },
+            "theme": {
+                "color": "#2300a3"
+            }
+        };
+        var razorpayObject = new Razorpay(options);
+        console.log(razorpayObject);
+        razorpayObject.on('payment.failed', function (response) {
+            console.log(response);
+            alert("This step of Payment Failed");
+        });
+
+        document.getElementById('pay-button').onclick = function (e) {
+            razorpayObject.open();
+            e.preventDefault();
+        }
+    </script>
+
+
+
+</body>
+
+</html>

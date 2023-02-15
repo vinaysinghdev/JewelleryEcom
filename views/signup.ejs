@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- alert -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arvo&family=Cookie&family=Great+Vibes&family=Outfit&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .cfont {
+      font-family: "Great Vibes", cursive;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+    }
+
+    .blackBtn {
+      background-color: black;
+      color: white !important;
+      border-radius: 30px;
+      width: 150px;
+      padding: 15px 0px;
+      margin: 5px;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .blackBtn:hover {
+      background-color: white;
+      color: black !important;
+    }
+
+    .whitebtn {
+      /* border: 2px solid white; */
+      background-color: white;
+      color: black !important;
+      border-radius: 30px;
+      width: 150px;
+      padding: 15px 0px;
+      margin: 5px;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .whitebtn:hover {
+      background-color: black;
+      color: white !important;
+    }
+
+
+    .main {
+      display: none;
+    }
+
+    .active {
+      display: block !important;
+    }
+
+    .d-none {
+      display: none !important;
+    }
+
+
+
+
+    .launch {
+      margin-top: 75px;
+    }
+
+    .checkmark__circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: #7ac142;
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 2;
+      stroke: #fff;
+      stroke-miterlimit: 10;
+      margin: 10% auto;
+      box-shadow: inset 0px 0px 0px #7ac142;
+      animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    }
+
+    .checkmark__check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes scale {
+
+      0%,
+      100% {
+        transform: none;
+      }
+
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+      }
+    }
+
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 30px #7ac142;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+  <div class="container-fluid" style="background-image: url('images/signupbg.jpg');">
+    <div class="row p-5 align-items-center" style="height: 100vh !important;">
+      <div class="col-8 m-auto" style="border-radius: 20px; overflow: hidden; background-color: white;">
+        <div class="row align-items-center">
+          <div class="col-md-6 p-0">
+            <img src="images/pexels-jonathan-borba-2965275.jpg" class="img-fluid" alt="" style="width: 80% !important; visibility: visible;">
+          </div>
+          <div class="col-md-6 pe-5">
+            <div class="card" style="border: none;">
+              <div class="parent">
+                <div class="d-flex align-items-center">
+                  <img src="images/ring.jpg" style="width: 50px;">
+                  <h3>SineJewel</h3>
+                </div>
+                <h4 class="cfont">Create Account on Sinejewel</h4>
+              </div>
+              <div class="main active">
+                <h5 class="cfont mb-4 mt-2">Step 1</h5>
+                <small class=""> Full Name : </small>
+                <input type="text" id="nameInp" style="border: none;" class="py-1 w-100 mb-5 border-bottom">
+                <small class=""> Email : </small>
+                <input type="text" id="emailInp" style="border: none;" class="py-1 w-100 mb-5 border-bottom">
+                <div class="button">
+                  <button class="blackBtn py-2" id="sendOpt">Next</button>
+                  <button class="create-workspace blackBtn py-2 d-none" id="sendOptHidden">Next</button>
+                </div>
+              </div>
+              <div class="main">
+                <h5 class="cfont mb-4 mt-2">Step 2</h5>
+                <small class=""> Enter Verification Code : </small>
+                <input type="text" id="otpInp" style="border: none;" class="py-1 w-100 mb-5 border-bottom">
+                <div class="button button_gap">
+                  <button class="back-click blackBtn py-2">Back</button>
+                  <button id="verifyOtp" class="blackBtn py-2">Verify</button>
+                  <button id="verifyOtpHidden" class="d-none next-click blackBtn py-2">Verify</button>
+                </div>
+              </div>
+              <div class="main">
+
+                <h5 class="cfont mb-4 mt-2">Step 3</h5>
+
+                <small class=""> Password : </small>
+                <input type="password" id="password" style="border: none;" class="py-1 w-100 mb-5 border-bottom">
+
+                <small class=""> Confirm Password : </small>
+                <input type="password" id="cpassword" style="border: none;" class="py-1 w-100 mb-5 border-bottom">
+
+                <div class="button button_gap1">
+                  <button class="blackBtn py-2" id="sbmtSignUp">Finish</button>
+                  <button class="finish-click blackBtn py-2 d-none" id="sbmtSignUpHidden">Finish</button>
+                </div>
+
+              </div>
+              <div class="main">
+
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                  <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                  <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+                <div class="content">
+                  <h2>Congratulations! <span id="shown_name"></span></h2>
+                  <p class="m-0"> Thank You !</p>
+                  <p>
+                    You have signed up successfully click button for login.
+                  </p>
+                </div>
+                <div class="button launch">
+                  <a href="/" class="blackBtn" style="padding: 10px 40px;
+                  text-decoration: none;"> Login </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <script>
+    $('#sendOpt').click(() => {
+
+      let name = $('#nameInp').val();
+      let email = $('#emailInp').val();
+
+      $.ajax({
+        url: '/checkMail',
+        method: "POST",
+        data: {
+          name: name,
+          email: email
+        },
+        success: (res) => {
+          if (res == 'valid') {
+            $('#sendOptHidden').click();
+          } else if (res == 'existing') {
+
+            iziToast.warning({
+              title: 'ERROR',
+              message: 'Alread Registered PLease Login !',
+            });
+          } else {
+            iziToast.warning({
+              title: 'ERROR',
+              message: 'Invalid Email !',
+            });
+          }
+        }
+      })
+    })
+
+    $('#verifyOtp').click(() => {
+
+      let otp = $('#otpInp').val();
+
+      $.ajax({
+        url: '/verifyOtp',
+        method: "POST",
+        data: {
+          otp: otp
+        },
+        success: (res) => {
+          if (res == 'match') {
+            $('#verifyOtpHidden').click();
+          } else {
+            iziToast.warning({
+              title: 'ERROR',
+              message: 'Invalid OTP !',
+            });
+          }
+        }
+      })
+    })
+
+
+    $('#sbmtSignUp').click(() => {
+
+      let name = $('#nameInp').val();
+      let email = $('#emailInp').val();
+      let password = $('#password').val();
+      let cpassword = $('#cpassword').val();
+
+      if (!password || !cpassword) {
+        iziToast.warning({
+          title: 'ERROR',
+          message: 'Fill all The Fields !',
+        });
+      } else if (password !== cpassword) {
+        iziToast.warning({
+          title: 'ERROR',
+          message: 'Password Mismatch !',
+        });
+      } else {
+
+        $.ajax({
+          url: '/finalSignUp',
+          method: "POST",
+          data: {
+            name: name,
+            email: email,
+            pass: cpassword
+          },
+          success: (res) => {
+            if (res == 'registered') {
+              $('#sbmtSignUpHidden').click();
+            } else {
+              iziToast.warning({
+                title: 'SERVER ERROR',
+                message: 'Something Wents Wrong Try after some time !',
+              });
+            }
+          }
+        })
+
+      }
+    })
+  </script>
+
+
+
+  <script>
+    var create_workspace = document.querySelector(".create-workspace");
+    var next_click = document.querySelectorAll(".next-click");
+    var back_click = document.querySelectorAll(".back-click");
+    var finish_click = document.querySelector(".finish-click");
+    var main_form = document.querySelectorAll(".main");
+    // var list = document.querySelectorAll(".progress-bar li")
+    let formnumber = 0;
+
+
+    create_workspace.addEventListener('click', function() {
+      if (!validateform()) {
+        return false;
+      }
+      formnumber++;
+      updateform();
+      // progress_forward();
+    });
+
+    next_click.forEach(function(next_page) {
+      next_page.addEventListener('click', function() {
+        if (!validateform()) {
+          return false;
+        }
+        formnumber++;
+        updateform();
+        // progress_forward();
+      });
+    });
+
+
+    back_click.forEach(function(back_page) {
+      back_page.addEventListener('click', function() {
+        formnumber--;
+        updateform();
+      });
+    });
+
+    finish_click.addEventListener('click', function() {
+      //   if(!validateform()){
+      //         return false;
+      //         }
+      formnumber++;
+      updateform();
+      // var remove_progress = document.querySelector(".progress-bar");
+      // remove_progress.classList.add('d-none');
+    });
+
+    // function progress_forward() {
+    //   list[formnumber].classList.add('active');
+    // }
+
+
+
+    function updateform() {
+      main_form.forEach(function(main_number) {
+        main_number.classList.remove('active');
+      });
+      main_form[formnumber].classList.add('active');
+
+
+    }
+
+
+
+
+    function validateform() {
+      validate = true;
+      var validate_form = document.querySelectorAll(".main.active input");
+      validate_form.forEach(function(val) {
+        val.classList.remove('warning');
+        if (val.hasAttribute('require')) {
+          if (val.value.length == 0) {
+            validate = false;
+            val.classList.add('warning');
+          }
+        }
+      });
+      return validate;
+    }
+  </script>
+
+</body>
+
+</html>

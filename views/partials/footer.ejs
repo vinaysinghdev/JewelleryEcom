@@ -1,0 +1,433 @@
+<!--newsletter strat -->
+<section id="newsletter" class="newsletter pb-0" style="background-color: rgb(248,249,253);">
+  <div class="container">
+    <div class="hm-footer-details">
+      <div class="row">
+        <div class=" col-md-3 col-sm-6 col-xs-12">
+          <div class="hm-footer-widget">
+            <div class="hm-foot-title">
+              <h4>Pages</h4>
+            </div>
+            <div class="hm-foot-menu">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/shop">store</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class=" col-md-3 col-sm-6 col-xs-12">
+          <div class="hm-footer-widget">
+            <div class="hm-foot-title">
+              <h4>collections</h4>
+            </div>
+            <div class="hm-foot-menu">
+              <ul>
+                <li><a href="shop/rings">Rings</a></li>
+                <li><a href="shop/earrings">Earrings</a></li>
+                <li><a href="shop/necklaces">Necklaces</a></li>
+                <li><a href="shop/braceletes">braceletes</a></li>
+                <li><a href="shop/nosepins">Nose Pin</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class=" col-md-3 col-sm-6 col-xs-12">
+          <div class="hm-footer-widget">
+            <div class="hm-foot-title">
+              <h4>my accounts</h4>
+            </div>
+            <div class="hm-foot-menu">
+              <ul>
+                <li><a href="/profile">my account</a></li>
+                <li><a href="/wishlist">wishlist</a></li>
+                <li><a href="/cart">My cart</a></li>
+                <li><a href="/orders">order history</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class=" col-md-3 col-sm-6  col-xs-12">
+          <div class="hm-footer-widget">
+            <div class="hm-foot-title">
+              <h4>newsletter</h4>
+            </div>
+            <div class="hm-foot-para">
+              <p>
+                Subscribe to get latest news,update and information.
+              </p>
+            </div>
+            <div class="hm-foot-email">
+              <div class="foot-email-box">
+                <input type="text" class="form-control" placeholder="Enter Email Here....">
+              </div>
+              <div class="foot-email-subscribe">
+                <span><i class="fa fa-location-arrow"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--footer start-->
+<footer id="footer" class="footer pt-0">
+  <div class="container">
+    <div class="hm-footer-copyright text-center">
+      <div class="footer-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-pinterest"></i></a>
+        <a href="#"><i class="fa fa-behance"></i></a>
+      </div>
+      <p>
+        &copy;copyright. designed and developed by <a>beetaltech</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="scroll-Top">
+    <div class="return-to-top">
+      <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+    </div>
+  </div>
+
+</footer>
+<!--footer end-->
+
+
+<!-- login Modal -->
+<div class="modal fade bd-example-modal-lg" id="loginMoalBox" tabindex="-1" role="dialog" aria-labelledby="loginMoalBoxTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-none">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row py-5 align-items-center">
+          <div class="col-6 text-center">
+            <img src="images/H3_images_01.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-6 p-5">
+            <h3 class="font-dark m-auto my-3"> Login </h3>
+            <small> Email : </small>
+            <input type="text" id="usernameInp" class="py-1 w-100 mb-3 border-bottom" style="border: none;">
+            <small> Passsword : </small>
+            <input type="password" id="passwordInp" style="border: none;" class="py-1 w-100 mb-4 border-bottom">
+            <button id="submitLogin" class="blackBtn m-auto py-3"> Submit </button>
+            <div class="d-flex py-3 justify-content-between">
+              <a href="#" style="font-size: 1.5rem;"> Forget Password </a>
+              <a href="/signup" style="font-size: 1.5rem;"> Signup </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer d-none">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(e) {
+    $('.cartBtn').click(function() {
+      var target = $('.cartIcon').first(),
+        target_offset = target.offset();
+
+      var target_x = target_offset.left,
+        target_y = target_offset.top;
+
+      console.log('target: ' + target_x + ', ' + target_y);
+
+      var obj_id = 1 + Math.floor(Math.random() * 100000),
+        obj_class = 'cart-animation-helper',
+        obj_class_id = obj_class + '_' + obj_id;
+
+      var obj = $("<div>", {
+        'class': obj_class + ' ' + obj_class_id
+      });
+
+      $(this).parent().parent().append(obj);
+
+      var obj_offset = obj.offset(),
+        dist_x = target_x - obj_offset.left + 10,
+        dist_y = target_y - obj_offset.top + 10,
+        delay = 2; // seconds
+
+      console.log('obj_off: ' + obj_offset.left + ', ' + obj_offset.top);
+
+      setTimeout(function() {
+        obj.css({
+          'transition': 'transform ' + delay + 's ease-in',
+          'transform': "translateX(" + dist_x + "px)"
+        });
+        $('<style>.' + obj_class_id + ':after{ \
+				transform: translateY(' + dist_y + 'px); \
+				opacity: 1; \
+				border-radius: 100%; \
+				max-height: 30px; \
+				max-width: 30px; margin: 0; \
+			}</style>').appendTo('head');
+      }, 0);
+
+
+      obj.show(2).delay((delay + 0.02) * 1000).hide(1, function() {
+        $(obj).remove();
+      });
+    });
+  });
+</script>
+
+
+<script>
+  function addtoCart(e) {
+    let id = e.getAttribute('data-id');
+    $.ajax({
+      url: "/addCartBtn",
+      method: "POST",
+      data: {
+        id: id,
+      },
+      success: (res) => {
+        if (res == 'added') {
+          iziToast.success({
+            title: 'OK',
+            message: 'Item Added Successfully!',
+          });
+        } else {
+          $('#loginPupupBtn').click();
+        }
+      }
+    })
+  }
+
+
+  function addtoWishlist(e) {
+    let id = e.getAttribute('data-id');
+    $.ajax({
+      url: "/addWishlist",
+      method: "POST",
+      data: {
+        id: id,
+      },
+      success: (res) => {
+        if (res == 'added') {
+          e.style.color = "red";
+        } else if (res == 'removed') {
+          e.style.color = "grey";
+        } else {
+          $('#loginPupupBtn').click();
+        }
+      }
+    })
+  }
+
+  function movetoCart(e) {
+    let id = e.getAttribute('data-id');
+    $.ajax({
+      url: "/movetoCart",
+      method: "POST",
+      data: {
+        id: id,
+      },
+      success: (res) => {
+        if (res == 'added') {
+          location.reload()
+        } else {
+          $('#loginPupupBtn').click();
+        }
+      }
+    })
+  }
+
+  function removeWishlist(e) {
+    let id = e.getAttribute('data-id');
+    $.ajax({
+      url: "/removeWishlist",
+      method: "POST",
+      data: {
+        id: id,
+      },
+      success: (res) => {
+        if (res == 'removed') {
+          location.reload()
+        } else {
+          $('#loginPupupBtn').click();
+        }
+      }
+    })
+  }
+
+
+  function removeCart(e) {
+    let id = e.getAttribute('data-id');
+    $.ajax({
+      url: "/deletetoCart",
+      method: "POST",
+      data: {
+        id: id,
+      },
+      success: (res) => {
+        if (res == 'removed') {
+          location.reload()
+        } else {
+          $('#loginPupupBtn').click();
+        }
+      }
+    })
+  }
+</script>
+
+<script>
+  $("a").on('click', function(e) {
+
+    let name = '<%=checkLogin%>';
+    if (!name) {
+      var href = $(this).attr("href");
+      if (href == '/cart') {
+        e.preventDefault();
+        $('#loginPupupBtn').click();
+        return;
+      }
+      if (href == '/profile') {
+        e.preventDefault();
+        $('#loginPupupBtn').click();
+        return;
+      }
+      if (href == '/wishlist') {
+        e.preventDefault();
+        $('#loginPupupBtn').click();
+        return;
+      }
+      if (href == '/orders') {
+        e.preventDefault();
+        $('#loginPupupBtn').click();
+        return;
+      }
+    }
+  });
+</script>
+
+<script>
+  $('#submitLogin').click(() => {
+    let username = $('#usernameInp').val();
+    let password = $('#passwordInp').val();
+
+    if (!username || !password) {
+      alert('Please Fill All the Fields')
+      return;
+    }
+    $.ajax({
+      url: "/userLogin",
+      method: "POST",
+      data: {
+        useremail: username,
+        password: password
+      },
+      success: (res) => {
+        if (res == 'login') {
+          location.reload();
+        } else if (res == "invalidPass") {
+          iziToast.warning({
+            title: 'ERROR',
+            message: 'Invalid Pass !',
+          });
+        } else if (res == "invalidUser") {
+          iziToast.warning({
+            title: 'ERROR',
+            message: 'Invalid User !',
+          });
+        } else {
+          iziToast.warning({
+            title: 'ERROR',
+            message: 'Something Wents Wrong try again later !',
+          });
+        }
+      }
+    })
+  })
+</script>
+
+
+<script>
+  $('#logoutBtn').click(() => {
+    $.ajax({
+      url: "/logout",
+      method: "POST",
+      success: (res) => {
+        window.location.href = '/';
+      }
+    })
+  })
+</script>
+
+<script>
+  let url = window.location.pathname;
+  var nav = document.getElementsByTagName('nav')[0];
+  if (url == '/checkout') {
+
+    nav.style.backgroundColor = 'black';
+    // trigger this function every time the user scrolls
+    window.onscroll = function(event) {
+      var scroll = window.pageYOffset;
+      if (scroll < 50) {
+        nav.style.backgroundColor = 'black';
+      } else if (scroll >= 40) {
+        nav.style.backgroundColor = 'black';
+      }
+    }
+  } else {
+    nav.style.backgroundColor = 'transparent';
+    // trigger this function every time the user scrolls
+    window.onscroll = function(event) {
+      var scroll = window.pageYOffset;
+      if (scroll < 50) {
+        nav.style.backgroundColor = 'transparent';
+      } else if (scroll >= 40) {
+        nav.style.backgroundColor = 'black';
+      }
+    }
+  }
+</script>
+
+
+
+<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+<script src="js/jquery.js"></script>
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<!--bootstrap.min.js-->
+<script src="js/bootstrap.min.js"></script>
+<!-- bootsnav js -->
+<script src="js/bootsnav.js"></script>
+<!--owl.carousel.js-->
+<script src="js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!--Custom JS-->
+<script src="js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="js/jquery.nice-select.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('select:not(.ignore)').niceSelect();
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 60vh !important; background-image: url(images/rev_home3_01.jpg); background-size: cover;">
+    <div class="col-md-10 m-auto">
+      <p class="whitetxt mb-4"> <a href="/" class="whitetxt">Home</a> / Profile </p>
+      <h1 class="whitetxt cfont" style="font-size: 5rem;"> Profile </h1>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5 my-5">
+  <div class="row py-5 align-items-center">
+    <div class="col-md-5 offset-md-1">
+      <h1 class="text-dark cfont mb-5"> Personal Information <span> <i class="ms-5 fa-regular fa-pen-to-square" data-toggle="modal" data-target="#profileEditModal" style="color: black; font-size: 2rem; cursor: pointer;"></i> </span> </h1>
+      <div class="d-flex">
+        <p style="width: 100px;"> Name: </p>
+        <p> <%= userInfo.name %> </p>
+      </div>
+      <div class="d-flex">
+        <p style="width: 100px;"> Mail: </p>
+        <p> <%= userInfo.email %> </p>
+      </div>
+      <div class="d-flex">
+        <p style="width: 100px;"> Mobile: </p>
+        <% if( userInfo.mobile){ %>
+        <p> <%= userInfo.mobile %></p>
+        <% } else { %>
+        <p> Update Your Mobile </p>
+        <% } %>
+      </div>
+      <div class="d-flex pe-4">
+        <p style="width: 100px;"> Address: </p>
+        <% if(userInfo.address.length > 0){ %>
+        <p> <%=userInfo.address[0]%>, <br> <%=userInfo.address[1]%>, <%=userInfo.address[2]%></p>
+        <% } else { %>
+        <p> Update Your Address </p>
+        <% } %>
+      </div>
+    </div>
+    <div class="col-md-5 offset-md-1 text-center">
+      <img src="images/profileImg/<%=userInfo.profileImg%>" style="width: 150px; border-radius: 50%; border: 1px solid lightgray;" alt="">
+      <div>
+        <form action="/uploadProImg" enctype="multipart/form-data" method="post" id="ProImgform" accept="image/png, image/gif, image/jpeg">
+
+          <label for="uploadImg" class="py-3 px-5" style="cursor: pointer;border: 1px dotted lightgray; border-radius: 10px; position: relative; top: 20px;">
+            <img src="images/icons/camera-shutter.png" width="30px" alt="">
+            <small style="font-size: 1.2rem; color: black;"> Change Profile Photo </small>
+          </label>
+
+          <input type="file" class="d-none" name="proImg" id="uploadImg">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="profileEditModal" tabindex="-1" role="dialog" aria-labelledby="profileEditModalTitle" data-backdrop="static" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-5">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="p-5">
+          <h4 class="mb-5"> Update Your Details </h4>
+          <form action="/updateprofile" method="post">
+            <small class=""> Name: </small>
+            <input type="text" style="border: none;" class="py-1 w-100 mb-5 border-bottom" name="name" value="<%=userInfo.name%>" />
+            <small class=""> Mobile: </small>
+            <input type="number" style="border: none;" class="py-1 w-100 mb-5 border-bottom" name="mobile" value="<%=userInfo.mobile%>" />
+            <small class=""> Address Line 1: </small>
+            <input type="text" style="border: none;" class="py-1 w-100 mb-5 border-bottom" name="address1" value="<%=userInfo.address[0]%>" />
+            <div class="d-flex">
+              <div>
+                <small class=""> State : </small>
+                <input type="text" style="border: none;" class="py-1 w-100 mb-5 border-bottom" name="state" value="<%=userInfo.address[1]%>" />
+              </div>
+              <div>
+                <small class=""> Pincode : </small>
+                <input type="number" style="border: none;" class="py-1 w-100 mb-5 border-bottom" name="pincode" value="<%=userInfo.address[2]%>" />
+              </div>
+            </div>
+
+            <input type="submit" value="Submit" class="blackBtn py-3" />
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const fileInput = document.getElementById('uploadImg');
+  fileInput.onchange = () => {
+    const selectedFiles = [...fileInput.files];
+    for (const f of selectedFiles) {
+      $("#ProImgform").submit()
+    }
+  }
+</script>
+
+<%- include('./partials/footer') %>

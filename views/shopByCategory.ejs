@@ -1,0 +1,135 @@
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+  <div class="row align-items-center" style="height: 60vh !important; background-image: url(images/rev_home3_01.jpg); background-size: cover;">
+    <div class="col-md-10 m-auto">
+      <p class="whitetxt mb-4"> <a href="/" class="whitetxt">Home</a> / Shop </p>
+      <h1 class="whitetxt cfont" style="font-size: 5rem;"> Shop </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="mt-5 w-75 m-auto">
+  <div class="w-75 m-auto ">
+    <div>
+      <small class="text-dark"> Search Product : </small>
+      <form>
+
+        <input type="text" id="mainSearchBar" style="border: none;" class="py-1 w-100 mb-4 border-bottom" name="search">
+        <input type="submit" value="Search" class="d-none">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-1 offset-md-11 text-end">
+      <form action="" id="sortForm">
+        <select name="sort" id="" onchange="$(this).closest('form').submit();">
+          <option value="Default"> Sort By : Default </option>
+          <option value="High"> Price : High to Low </option>
+          <option value="Low"> Price : Low to High </option>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row px-5 justify-content-center">
+    <div class="col-3 px-5">
+      <div>
+
+      </div>
+
+
+      <h4 class="mb-3"> Select Category </h4>
+      <div class="bg-light p-4 mb-5" style="border-radius: 10px; overflow: auto; height: 110px;">
+        <% category.forEach(( value,index )=>{  %>
+        <div class="form-check align-items-center justify-content-center">
+          <input class="form-check-input" type="checkbox" value="" id="<%=value%>Checkbox">
+          <label class="form-check-label" for="<%=value%>Checkbox" style="font-weight: normal; font-size: 1.4rem; color: black;">
+            <%=value%>
+          </label>
+        </div>
+        <% }) %>
+      </div>
+      <h4 class="mb-3"> Select Color </h4>
+      <div class="bg-light p-4 mb-5" style="border-radius: 10px; overflow: auto; height: 110px;">
+        <% colors.forEach(( value,index )=>{  %>
+        <div class="form-check align-items-center justify-content-center">
+          <input class="form-check-input" type="checkbox" value="" id="<%=value%>Checkbox">
+          <label class="form-check-label" for="<%=value%>Checkbox" style="font-weight: normal; font-size: 1.4rem; color: black;">
+            <%=value%>
+          </label>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="col-9 px-5">
+
+      <% allProduct.forEach((value,index)=>{ %>
+
+      <div class="col-md-4 col-sm-4">
+        <div class="single-new-arrival">
+          <div class="single-new-arrival-bg">
+
+            <img src="images/productImg/<%=value.productImg[0]%>" alt="new-arrivals images">
+            <div class="single-new-arrival-bg-overlay"></div>
+            <div class="sale bg-1" style="background-color: white !important;">
+
+              <% if( typeof wishlist !='undefined' ){ %>
+              <% let checkWishlist=wishlist.includes((value._id).toString()) %>
+
+              <% if(checkWishlist){ %>
+
+              <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                <i class="fa-solid fa-heart" style="color: red;"></i>
+              </span>
+
+              <% } else { %>
+
+              <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                <i class="fa-solid fa-heart"></i>
+              </span>
+
+              <% } %>
+              <% } else { %>
+              <span onclick="addtoWishlist(this)" data-id="<%=value._id%>" style="cursor: pointer;">
+                <i class="fa-solid fa-heart"></i>
+              </span>
+
+              <% } %>
+
+
+
+
+            </div>
+            <div class="new-arrival-cart text-center">
+              <p class="m-0">
+                <a onclick="addtoCart(this)" data-id="<%=value._id%>" style="cursor: pointer;">add <span>to
+                  </span> cart</a>
+              </p>
+            </div>
+          </div>
+          <h4><a href="/shop/<%=value.category%>/<%=value._id%>">
+              <%=value.name%>
+            </a></h4>
+          <div class="d-flex align-items-center" style="justify-content: center;">
+            <p class="arrival-product-price me-2">₹ <%= value.price %>
+            </p>
+            <small><strike>₹ <%= value.oldPrice %> </strike></small>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+
+    </div>
+  </div>
+</div>
+
+
+<%- include('./partials/footer') %>
